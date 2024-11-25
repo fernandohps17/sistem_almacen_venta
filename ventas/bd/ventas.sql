@@ -56,7 +56,7 @@ create table clientes(
     email varchar(200),
     telefono varchar(200),
     rfc varchar(200),
-    primary key(id_clientes)
+    primary key(id_cliente)
 );
 
 -- TABLA VENTAS
