@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
         }
     </style>
 </head>
+
 <body style="background-color: gray;">
     <br><br><br>
     <div class="container">
@@ -33,7 +35,7 @@
                         <p>
                             <img src="./img/Logo.png" class="img-fluid mx-auto d-block" alt="Logo del sistema" title="Logo del sistema" width="200px" height="200px">
                         </p>
-                        
+
                         <form action="" id="frmLogin">
                             <label>Usuario</label>
                             <input type="text" class="form-control input-sm" name="usuario" id="usuario">
@@ -41,7 +43,7 @@
                             <label>Contraseña</label>
                             <input type="password" name="password" id="password" class="form-control input-sm">
                             <p></p>
-                            <span class="btn btn-primary">Entrar</span>
+                            <span class="btn btn-primary" id="entrarSistema">Entrar</span>
                             <a href="./registro.php" class="btn btn-danger">Registrar</a>
                         </form>
                     </div>
@@ -52,4 +54,25 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#entrarSistema').click(function() {
+            datos = $('#frmLogin').serialize();
+            $.ajax({
+                type: "POST",
+                dara: datos,
+                url: "./procesos/regLogin/login.php",
+                success: function(r) {
+                    if(r==1) {
+                        window.location="vistas/inicio.php";
+                    } else {
+                        alertify.alert("No se pudo acceder")
+                    }
+                }
+                // video 7 minuto 3 segundo 27
+            })
+        })
+    })
+</script>
+
 </html>
